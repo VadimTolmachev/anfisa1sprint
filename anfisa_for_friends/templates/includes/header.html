@@ -1,7 +1,5 @@
 {% load static %}
-
 <header>
-  <img src="{% static 'img/logo.png' %}" height="50" alt="">
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
     <div class="container">
       <div 
@@ -16,7 +14,8 @@
         <span class="navbar-toggler-icon"></span>
       </div>
       {% with request.resolver_match.view_name as view_name %}
-      <div class="collapse navbar-collapse" id="navbarNav">                      
+      <div class="collapse navbar-collapse" id="navbarNav">
+                        
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link {% if view_name  == 'homepage:index' %}
@@ -39,8 +38,8 @@
         </ul>
       </div>
       {% endwith %}
-      <a class="navbar-brand" href="index.html">
-        <img src="img/logo.png" height="50" class="d-inline-block align-top" alt="">            
+      <a class="navbar-brand" href="{% url 'homepage:index' %}">
+        <img src="{% static 'img/logo.png' %}" height="50" class="d-inline-block align-top" alt="">            
       </a>
     </div>
   </nav>
