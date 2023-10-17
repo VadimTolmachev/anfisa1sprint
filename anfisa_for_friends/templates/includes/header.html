@@ -1,4 +1,5 @@
 {% load static %}
+
 <header>
   <img src="{% static 'img/logo.png' %}" height="50" alt="">
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
@@ -14,28 +15,30 @@
       >
         <span class="navbar-toggler-icon"></span>
       </div>
+      {% with request.resolver_match.view_name as view_name %}
       <div class="collapse navbar-collapse" id="navbarNav">                      
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name  == 'homepage:index' %}
+            <a class="nav-link {% if view_name  == 'homepage:index' %}
                active {% endif %}" href="{% url 'homepage:index' %}">
               Главная
             </a>  
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name  == 'ice_cream:ice_cream_list' %}
+            <a class="nav-link {% if view_name  == 'ice_cream:ice_cream_list' %}
                active {% endif %}" href="{% url 'ice_cream:ice_cream_list' %}">
               Каталог мороженого
             </a>       
           </li>
           <li class="nav-item">
-            <a class="nav-link {% if request.resolver_match.view_name  == 'about:description' %}
+            <a class="nav-link {% if view_name  == 'about:description' %}
                active {% endif %}" href="{% url 'about:description' %}">
               О проекте
             </a>
           </li>
         </ul>
       </div>
+      {% endwith %}
       <a class="navbar-brand" href="index.html">
         <img src="img/logo.png" height="50" class="d-inline-block align-top" alt="">            
       </a>
